@@ -19,11 +19,13 @@ func SetupDatabaseConfig() *gorm.DB {
 	return db
 }
 
-func closeDatabaseConfig() (db *gorm.DB) {
+func CloseDatabaseConfig(db *gorm.DB) {
 	dbPostgre, err := db.DB()
+
 	if err != nil {
 		panic("failed to close db")
 	}
 
-	dbPostgre.close()
+	dbPostgre.Close()
+
 }
